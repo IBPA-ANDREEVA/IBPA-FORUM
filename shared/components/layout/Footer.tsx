@@ -7,6 +7,7 @@ import JuryMenu from "@/shared/components/layout/JuryMenu";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import Modal from "@/shared/components/ui/Modal";
 import { legalContent } from "@/shared/components/layout/legal-content";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/shared/lib/contact";
 
 export default function Footer() {
   const { language } = useLanguage();
@@ -101,6 +102,7 @@ export default function Footer() {
       links: [
         { href: "/#gallery", label: copy.mediaCentre },
         { href: "mailto:forum-support@ibpassociations.org", label: copy.contact },
+        { href: CONTACT_PHONE_HREF, label: CONTACT_PHONE_DISPLAY },
         { href: "#", label: copy.terms, legalType: "terms" as const },
         { href: "#", label: copy.privacy, legalType: "privacy" as const },
       ],
@@ -153,7 +155,7 @@ export default function Footer() {
                       >
                         {link.label}
                       </button>
-                    ) : link.href.startsWith("mailto:") ? (
+                    ) : link.href.startsWith("mailto:") || link.href.startsWith("tel:") ? (
                       <a
                         key={link.label}
                         href={link.href}

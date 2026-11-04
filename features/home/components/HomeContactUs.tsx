@@ -1,10 +1,11 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Mail, User } from "lucide-react";
+import { Mail, Phone, User } from "lucide-react";
 
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { LandingPrimaryButton, Reveal } from "@/shared/components/public";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/shared/lib/contact";
 
 type Status = "idle" | "sending" | "sent" | "error" | "invalid";
 
@@ -94,6 +95,14 @@ export default function ContactUsFormSection() {
             <h2 className="mt-4 font-[var(--font-display)] text-[clamp(2.35rem,5vw,5.2rem)] leading-[0.9] tracking-[-0.06em] text-[#10182a]">
               {c.title}
             </h2>
+
+            <a
+              href={CONTACT_PHONE_HREF}
+              className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#10182a]/70 transition hover:text-[#10182a]"
+            >
+              <Phone size={16} className="shrink-0 text-[#72a0c1]" />
+              {CONTACT_PHONE_DISPLAY}
+            </a>
           </div>
 
           {/* Honeypot — hidden from users, catches naive bots. */}
